@@ -12,26 +12,26 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0f172a;
             min-height: 100vh;
             padding: 2rem;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: #1e293b; border: 1px solid #334155;
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         h1 {
-            color: #333;
+            color: #e2e8f0;
             margin-bottom: 0.5rem;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #60a5fa;
             text-decoration: none;
             font-weight: 500;
         }
@@ -40,27 +40,29 @@
         }
         .pattern-badge {
             display: inline-block;
-            background: #fd7e14;
-            color: white;
+            background: #fb923c;
+            color: #0f172a;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.85rem;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
         .description {
-            background: #f8f9fa;
+            background: #0f172a;
+            border: 1px solid #334155;
             padding: 1.5rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 4px solid #fd7e14;
+            border-left: 4px solid #fb923c;
         }
         .description h2 {
-            color: #fd7e14;
+            color: #fb923c;
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
         .description p {
-            color: #666;
+            color: #94a3b8;
             line-height: 1.6;
         }
         .coffee-builder {
@@ -70,12 +72,12 @@
             margin: 2rem 0;
         }
         .options-panel {
-            background: #f8f9fa;
+            background: #0f172a; border: 1px solid #334155;
             padding: 1.5rem;
             border-radius: 8px;
         }
         .options-panel h3 {
-            color: #333;
+            color: #e2e8f0;
             margin-bottom: 1rem;
         }
         .base-coffee {
@@ -85,32 +87,42 @@
             display: block;
             font-weight: 500;
             margin-bottom: 0.5rem;
+            color: #e2e8f0;
         }
         .base-coffee select {
             width: 100%;
             padding: 0.75rem;
-            border: 2px solid #dee2e6;
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
             border-radius: 6px;
             font-size: 1rem;
+        }
+        .base-coffee select:focus {
+            outline: none;
+            border-color: #fb923c;
         }
         .decorators h4 {
             font-weight: 500;
             margin-bottom: 0.75rem;
-            color: #333;
+            color: #e2e8f0;
         }
         .decorator-option {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem;
-            background: white;
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
             border-radius: 6px;
             margin-bottom: 0.5rem;
             cursor: pointer;
             transition: all 0.3s;
         }
         .decorator-option:hover {
-            background: #e9ecef;
+            background: #334155;
+            border-color: #fb923c;
         }
         .decorator-option input[type="checkbox"] {
             width: 20px;
@@ -120,8 +132,8 @@
         .btn-order {
             width: 100%;
             padding: 1rem;
-            background: #fd7e14;
-            color: white;
+            background: #fb923c;
+            color: #0f172a;
             border: none;
             border-radius: 8px;
             font-size: 1.1rem;
@@ -131,20 +143,21 @@
             transition: all 0.3s;
         }
         .btn-order:hover {
-            background: #e8590c;
+            background: #fdba74;
             transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(251,146,60,0.3);
         }
         .result-panel {
-            background: #f8f9fa;
+            background: #0f172a; border: 1px solid #334155;
             padding: 1.5rem;
             border-radius: 8px;
         }
         .result-panel h3 {
-            color: #333;
+            color: #e2e8f0;
             margin-bottom: 1rem;
         }
         .coffee-display {
-            background: white;
+            background: #1e293b; border: 1px solid #334155;
             padding: 2rem;
             border-radius: 8px;
             text-align: center;
@@ -157,11 +170,11 @@
         .coffee-name {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #fd7e14;
+            color: #fb923c;
             margin-bottom: 1rem;
         }
         .coffee-details {
-            background: white;
+            background: #1e293b; border: 1px solid #334155;
             padding: 1.5rem;
             border-radius: 8px;
         }
@@ -169,13 +182,13 @@
             display: flex;
             justify-content: space-between;
             padding: 0.75rem;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #334155;
         }
         .detail-item:last-child {
             border-bottom: none;
             font-weight: bold;
             font-size: 1.2rem;
-            color: #fd7e14;
+            color: #fb923c;
         }
     </style>
 </head>
@@ -237,7 +250,7 @@
                     <div class="coffee-name" id="coffeeName">Select your coffee</div>
                 </div>
                 <div class="coffee-details" id="coffeeDetails">
-                    <p style="text-align: center; color: #999;">Configure your coffee and click "Order Coffee"</p>
+                    <p style="text-align: center; color: #64748b;">Configure your coffee and click "Order Coffee"</p>
                 </div>
             </div>
         </div>
