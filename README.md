@@ -10,7 +10,6 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/matiascarabella/design-patterns-js?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/stars/matiascarabella/design-patterns-js?style=flat-square" alt="Stars">
   <img src="https://img.shields.io/github/forks/matiascarabella/design-patterns-js?style=flat-square" alt="Forks">
 </p>
