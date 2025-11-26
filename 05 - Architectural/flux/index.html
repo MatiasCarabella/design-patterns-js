@@ -3,12 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flux Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #6f42c1;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #6f42c1;
+        }
+        .description h2 {
+            color: #6f42c1;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .flux-diagram {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .flux-step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #6f42c1;
+            position: relative;
+        }
+        .flux-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #6f42c1;
+        }
+        .flux-step:last-child::after {
+            content: '';
+        }
+        .flux-step .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .flux-step h4 {
+            color: #6f42c1;
+            margin-bottom: 0.5rem;
+        }
+        .counter-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .counter-display {
+            background: white;
+            color: #333;
+            font-size: 4rem;
+            font-weight: bold;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .counter-display span {
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+        .counter-label {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-increment {
+            background: #28a745;
+            color: white;
+        }
+        .btn-increment:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        .btn-decrement {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-decrement:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+        .action-log {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 2rem;
+        }
+        .action-log h3 {
+            color: #4ec9b0;
+            margin-bottom: 1rem;
+        }
+        .log-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0;
+        }
+        .log-action {
+            color: #dcdcaa;
+        }
+        .log-state {
+            color: #ce9178;
+        }
+    </style>
 </head>
 <body>
-    <h1>Counter: <span id="counter">0</span></h1>
-    <button id="incrementBtn">Increment</button>
-    <button id="decrementBtn">Decrement</button>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🏛️ Architectural Pattern</div>
+        <h1>Flux Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Flux Pattern?</h2>
+            <p>Flux is an architectural pattern for managing application state with unidirectional data flow. It was created by Facebook to work with React, emphasizing predictable state management.</p>
+        </div>
+
+        <div class="flux-diagram">
+            <div class="flux-step">
+                <div class="icon">👆</div>
+                <h4>Action</h4>
+                <p>User clicks button</p>
+            </div>
+            <div class="flux-step">
+                <div class="icon">📡</div>
+                <h4>Dispatcher</h4>
+                <p>Routes action</p>
+            </div>
+            <div class="flux-step">
+                <div class="icon">🗄️</div>
+                <h4>Store</h4>
+                <p>Updates state</p>
+            </div>
+            <div class="flux-step">
+                <div class="icon">👁️</div>
+                <h4>View</h4>
+                <p>Re-renders UI</p>
+            </div>
+        </div>
+
+        <div class="counter-demo">
+            <div class="counter-label">Counter Value</div>
+            <div class="counter-display">
+                <span id="counter">0</span>
+            </div>
+            <div class="button-group">
+                <button id="incrementBtn" class="btn btn-increment">➕ Increment</button>
+                <button id="decrementBtn" class="btn btn-decrement">➖ Decrement</button>
+            </div>
+        </div>
+
+        <div class="action-log">
+            <h3>📋 Action Log</h3>
+            <div id="actionLog"></div>
+        </div>
+    </div>
     <script src="js/flux.js"></script>
 </body>
 </html>

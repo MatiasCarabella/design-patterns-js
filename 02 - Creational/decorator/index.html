@@ -3,9 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Builder Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .description h2 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .builder-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .options-panel {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .options-panel h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        .option-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .option-group select,
+        .option-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        .btn-build {
+            width: 100%;
+            padding: 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-build:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        .result-panel {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .result-panel h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .car-display {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .car-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        .car-specs {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        .spec-label {
+            font-weight: 500;
+            color: #666;
+        }
+        .spec-value {
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <script src="js/decorator.js"></script>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🏗️ Creational Pattern</div>
+        <h1>Builder Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Builder Pattern?</h2>
+            <p>The Builder pattern separates the construction of a complex object from its representation, allowing the same construction process to create different representations. Perfect for creating objects with many optional parameters!</p>
+        </div>
+
+        <div class="builder-section">
+            <div class="options-panel">
+                <h3>🔧 Build Your Car</h3>
+                
+                <div class="option-group">
+                    <label>Model</label>
+                    <select id="model">
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Sports">Sports Car</option>
+                        <option value="Truck">Truck</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label>Color</label>
+                    <select id="color">
+                        <option value="Red">Red</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Silver">Silver</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label>Engine</label>
+                    <select id="engine">
+                        <option value="V4">V4</option>
+                        <option value="V6">V6</option>
+                        <option value="V8">V8</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label>Optional Features</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="gps">
+                        <label for="gps">GPS Navigation</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sunroof">
+                        <label for="sunroof">Sunroof</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="leather">
+                        <label for="leather">Leather Seats</label>
+                    </div>
+                </div>
+
+                <button class="btn-build" onclick="buildCar()">🚗 Build Car</button>
+            </div>
+
+            <div class="result-panel">
+                <h3>📋 Your Car</h3>
+                <div class="car-display">
+                    <div class="car-icon">🚗</div>
+                    <div id="carName" style="font-size: 1.5rem; font-weight: bold; color: #667eea;">Configure your car</div>
+                </div>
+                <div class="car-specs" id="carSpecs">
+                    <p style="text-align: center; color: #999;">Select options and click "Build Car"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/builder.js"></script>
 </body>
 </html>

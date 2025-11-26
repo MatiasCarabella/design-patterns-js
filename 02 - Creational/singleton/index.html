@@ -3,9 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Singleton Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .description h2 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .demo-section {
+            margin-top: 2rem;
+        }
+        .demo-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .logger-instances {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .logger-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+        .logger-card h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .logger-card .instance-id {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-bottom: 1rem;
+        }
+        #console {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin-bottom: 0.5rem;
+        }
+        .log-success {
+            color: #4ec9b0;
+        }
+        .log-info {
+            color: #ce9178;
+        }
+        .log-warning {
+            color: #dcdcaa;
+        }
+        .key-point {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .key-point strong {
+            color: #856404;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🏗️ Creational Pattern</div>
+        <h1>Singleton Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Singleton Pattern?</h2>
+            <p>The Singleton pattern ensures a class has only <strong>one instance</strong> and provides a global point of access to it. Perfect for managing shared resources like loggers, database connections, or configuration settings.</p>
+        </div>
+
+        <div class="key-point">
+            <strong>Key Concept:</strong> No matter how many times you try to create a new instance, you always get the same object back!
+        </div>
+
+        <div class="demo-section">
+            <h3>Live Demo</h3>
+            <div class="logger-instances">
+                <div class="logger-card">
+                    <h4>Logger Instance #1</h4>
+                    <div class="instance-id" id="logger1-id">Creating...</div>
+                    <p>Created from "file1.js"</p>
+                </div>
+                <div class="logger-card">
+                    <h4>Logger Instance #2</h4>
+                    <div class="instance-id" id="logger2-id">Creating...</div>
+                    <p>Created from "file2.js"</p>
+                </div>
+            </div>
+            
+            <h3>Console Output</h3>
+            <div id="console"></div>
+        </div>
+    </div>
     <script src="js/singleton.js"></script>
 </body>
 </html>

@@ -3,17 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Observer Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #28a745;
+        }
+        .description h2 {
+            color: #28a745;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .input-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .input-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .input-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+        .input-group button {
+            padding: 0.75rem 2rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .input-group button:hover {
+            background: #218838;
+        }
+        .observers-section {
+            margin-top: 2rem;
+        }
+        .observers-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .observers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .observer-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #28a745;
+            min-height: 200px;
+        }
+        .observer-card h4 {
+            color: #28a745;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .observer-card .item {
+            background: white;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            border-left: 3px solid #28a745;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .key-point {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .key-point strong {
+            color: #0c5460;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <label>Nombre:</label>
-        <input type="text" id="txtName">
-        <button onclick="getValue()" >Agregar</button>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🎯 Behavioral Pattern</div>
+        <h1>Observer Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Observer Pattern?</h2>
+            <p>The Observer pattern defines a one-to-many dependency between objects. When the subject changes state, all its observers are notified and updated automatically. Think of it like a newsletter subscription!</p>
+        </div>
+
+        <div class="key-point">
+            <strong>Key Concept:</strong> One subject (publisher) can notify multiple observers (subscribers) about changes without tight coupling.
+        </div>
+
+        <div class="input-section">
+            <h3>📢 Add Item (Subject)</h3>
+            <div class="input-group">
+                <label>Item Name:</label>
+                <input type="text" id="txtName" placeholder="Enter an item name...">
+                <button onclick="getValue()">Add Item</button>
+            </div>
+        </div>
+
+        <div class="observers-section">
+            <h3>👀 Observers (Subscribers)</h3>
+            <div class="observers-grid">
+                <div class="observer-card">
+                    <h4>📋 Observer #1</h4>
+                    <div id="div1"></div>
+                </div>
+                <div class="observer-card">
+                    <h4>📋 Observer #2</h4>
+                    <div id="div2"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="div1"></div>
-    <div id="div2"></div>
     
-        <script src="js/observer.js"></script>
+    <script src="js/observer.js"></script>
 </body>
 </html>

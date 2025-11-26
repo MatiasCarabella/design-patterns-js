@@ -1,0 +1,24 @@
+{
+  "name": "design-patterns-js",
+  "version": "1.0.0",
+  "description": "A comprehensive collection of JavaScript design patterns with examples and explanations",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "dev": "npx http-server -p 3000 -o -c-1"
+  },
+  "keywords": [
+    "design-patterns",
+    "javascript",
+    "typescript",
+    "creational",
+    "structural",
+    "behavioral",
+    "architectural"
+  ],
+  "author": "Matías Carabella & Daiana Arena",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

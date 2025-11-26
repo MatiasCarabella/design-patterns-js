@@ -3,9 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Strategy Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #28a745;
+        }
+        .description h2 {
+            color: #28a745;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .demo-section {
+            margin-top: 2rem;
+        }
+        .calculator {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .calculator h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        .input-group label {
+            font-weight: 500;
+            min-width: 120px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .strategy-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .strategy-btn {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .strategy-btn:hover {
+            background: #28a745;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .strategy-btn.active {
+            background: #28a745;
+            color: white;
+        }
+        .result {
+            background: #28a745;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .key-point {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🎯 Behavioral Pattern</div>
+        <h1>Strategy Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Strategy Pattern?</h2>
+            <p>The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It lets the algorithm vary independently from clients that use it.</p>
+        </div>
+
+        <div class="key-point">
+            <strong>Key Concept:</strong> Instead of implementing a single algorithm directly, code receives runtime instructions on which algorithm to use from a family of algorithms.
+        </div>
+
+        <div class="demo-section">
+            <div class="calculator">
+                <h3>💰 Discount Calculator</h3>
+                <div class="input-group">
+                    <label>Original Price:</label>
+                    <input type="number" id="priceInput" value="100" min="0">
+                </div>
+                
+                <h4 style="margin: 1rem 0 0.5rem 0;">Select Discount Strategy:</h4>
+                <div class="strategy-buttons">
+                    <div class="strategy-btn" onclick="applyStrategy('regular', this)">
+                        <div style="font-size: 2rem;">🏷️</div>
+                        <div><strong>Regular Sale</strong></div>
+                        <div>20% off</div>
+                    </div>
+                    <div class="strategy-btn" onclick="applyStrategy('premium', this)">
+                        <div style="font-size: 2rem;">⭐</div>
+                        <div><strong>Premium Member</strong></div>
+                        <div>30% off</div>
+                    </div>
+                    <div class="strategy-btn" onclick="applyStrategy('vip', this)">
+                        <div style="font-size: 2rem;">👑</div>
+                        <div><strong>VIP Member</strong></div>
+                        <div>50% off</div>
+                    </div>
+                </div>
+                
+                <div id="result" class="result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    
     <script src="js/strategy.js"></script>
 </body>
 </html>

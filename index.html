@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns in JavaScript - Interactive Examples</title>
+    <meta name="description" content="Learn JavaScript design patterns with interactive examples. Explore Creational, Structural, Behavioral, and Architectural patterns with live demos.">
+    <meta name="keywords" content="JavaScript, design patterns, programming, software development, creational patterns, structural patterns, behavioral patterns">
+    <meta name="author" content="Matías Carabella, Daiana Arena">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Design Patterns in JavaScript">
+    <meta property="og:description" content="Learn JavaScript design patterns with interactive examples and live demos.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Design Patterns in JavaScript">
+    <meta property="twitter:description" content="Learn JavaScript design patterns with interactive examples and live demos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .category {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-right: 0.75rem;
+        }
+
+        .category h2 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .category-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .patterns {
+            list-style: none;
+        }
+
+        .patterns li {
+            margin-bottom: 0.5rem;
+        }
+
+        .patterns a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .patterns a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+
+        .intro-section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Design Patterns in JavaScript</h1>
+            <p class="subtitle">Learn proven solutions to common coding challenges</p>
+        </header>
+
+        <div class="intro-section">
+            <h2>📚 JavaScript Fundamentals</h2>
+            <p>Start here if you need a refresher on JavaScript basics before diving into design patterns.</p>
+            <ul class="patterns">
+                <li><a href="01 - JS Intro/index.html">JavaScript Introduction</a></li>
+            </ul>
+        </div>
+
+        <div class="categories">
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🏗️</span>
+                    <h2>Creational</h2>
+                </div>
+                <p class="category-description">
+                    Patterns that focus on object creation mechanisms, providing flexibility in how objects are instantiated.
+                </p>
+                <ul class="patterns">
+                    <li><a href="02 - Creational/singleton/index.html">Singleton</a></li>
+                    <li><a href="02 - Creational/decorator/index.html">Builder</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🎯</span>
+                    <h2>Behavioral</h2>
+                </div>
+                <p class="category-description">
+                    Define communication patterns between objects and how they collaborate effectively.
+                </p>
+                <ul class="patterns">
+                    <li><a href="03 - Behavioral/observer/index.html">Observer</a></li>
+                    <li><a href="03 - Behavioral/state/index.html">State</a></li>
+                    <li><a href="03 - Behavioral/strategy/index.html">Strategy</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🔧</span>
+                    <h2>Structural</h2>
+                </div>
+                <p class="category-description">
+                    Deal with object composition and relationships, forming larger structures from components.
+                </p>
+                <ul class="patterns">
+                    <li><a href="04 - Structural/bridge/index.html">Bridge</a></li>
+                    <li><a href="04 - Structural/decorator/index.html">Decorator</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🏛️</span>
+                    <h2>Architectural</h2>
+                </div>
+                <p class="category-description">
+                    Provide guidance on organizing application structure for scalability and maintainability.
+                </p>
+                <ul class="patterns">
+                    <li><a href="05 - Architectural/flux/index.html">Flux</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Created with ♥ by  <a href="https://www.linkedin.com/in/arenadaiana/" target="_blank">Daiana Arena</a> & <a href="https://www.linkedin.com/in/matiascarabella/" target="_blank">Matías Carabella</a></p>
+        </footer>
+    </div>
+</body>
+</html>

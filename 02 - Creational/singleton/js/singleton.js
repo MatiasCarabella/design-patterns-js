@@ -1,5 +1,14 @@
-class Logger {
+// Custom console logger for the page
+const consoleDiv = document.getElementById('console');
+function logToPage(message, type = 'info') {
+    const entry = document.createElement('div');
+    entry.className = `log-entry log-${type}`;
+    entry.textContent = message;
+    consoleDiv.appendChild(entry);
+    console.log(message);
+}
 
+class Logger {
     /**
      * Here, the Singleton Design Pattern is exemplified with a Logger class.
      * Naturally, if we were interested in logging our application or project,
@@ -10,18 +19,19 @@ class Logger {
 
     constructor() {
         if (Logger.instance) {
-            console.log("Logger already exists");
+            logToPage("⚠️ Logger already exists - returning existing instance", "warning");
             return Logger.instance;
         }
-        console.log(("Creating Logger..."));
+        logToPage("✅ Creating new Logger instance...", "success");
 
         this.logs = [];
+        this.instanceId = Math.random().toString(36).substr(2, 9);
         Logger.instance = this;
     }
 
     // The log function stores its input in the logs array 
     log(data) {
-        console.log("Logging: " + data);
+        logToPage(`📝 Logging: ${data}`, "info");
         this.logs.push(data);
     }
 
@@ -32,24 +42,34 @@ class Logger {
 
     // The show function prints all logs into the console
     show() {
-        this.logs.forEach(log => console.log(log))
+        logToPage("--- All Logs ---", "info");
+        this.logs.forEach(log => logToPage(`  • ${log}`, "info"));
+    }
+
+    getInstanceId() {
+        return this.instanceId;
     }
 }
 
-// Let's say we call the Logger on some file from our project:
-let the_logger = new Logger();
-the_logger.log('FIRST LOG');
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Simulate creating logger from different files
+    logToPage("=== Simulating file1.js ===", "success");
+    let the_logger = new Logger();
+    document.getElementById('logger1-id').textContent = `Instance ID: ${the_logger.getInstanceId()}`;
+    the_logger.log('FIRST LOG from file1.js');
 
-// And then, on a different file, we also want to use the Logger:
-let another_logger = new Logger();
-another_logger.log('SECOND LOG');
+    logToPage("\n=== Simulating file2.js ===", "success");
+    let another_logger = new Logger();
+    document.getElementById('logger2-id').textContent = `Instance ID: ${another_logger.getInstanceId()}`;
+    another_logger.log('SECOND LOG from file2.js');
 
-//Then, the second logger can check the amount of logs a:
-console.log("LOG COUNT: " + another_logger.size());
-another_logger.show();
+    logToPage("\n=== Verification ===", "success");
+    logToPage(`📊 Total log count: ${another_logger.size()}`, "info");
+    logToPage(`🔍 Are they the same instance? ${the_logger === another_logger ? 'YES ✓' : 'NO ✗'}`, "success");
+    logToPage("", "info");
+    another_logger.show();
 
-/**
- * This second file had nothing to do with the previous one,
- * but it can access the logs they generated because the Logger object
- * is always the same, thanks to the Singleton Design Pattern.
- */
+    logToPage("\n💡 Notice: Both variables reference the SAME Logger instance!", "warning");
+});
+

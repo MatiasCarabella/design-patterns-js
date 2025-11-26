@@ -3,9 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bridge Pattern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .pattern-badge {
+            display: inline-block;
+            background: #fd7e14;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #fd7e14;
+        }
+        .description h2 {
+            color: #fd7e14;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .description p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .demo-section {
+            margin: 2rem 0;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .control-panel {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .control-panel h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .device-btn {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .device-btn:hover {
+            border-color: #fd7e14;
+            transform: translateX(5px);
+        }
+        .device-btn.active {
+            background: #fd7e14;
+            color: white;
+            border-color: #fd7e14;
+        }
+        .remote-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .remote-btn {
+            padding: 1.5rem;
+            background: #fd7e14;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .remote-btn:hover {
+            background: #e8590c;
+            transform: translateY(-2px);
+        }
+        .display {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            padding: 2rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            min-height: 200px;
+        }
+        .display h3 {
+            color: #dcdcaa;
+            margin-bottom: 1rem;
+        }
+        .log-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: #2d2d2d;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        <div class="pattern-badge">🔧 Structural Pattern</div>
+        <h1>Bridge Pattern</h1>
+        
+        <div class="description">
+            <h2>What is the Bridge Pattern?</h2>
+            <p>The Bridge pattern decouples an abstraction from its implementation so that the two can vary independently. It's like having a universal remote that can control different devices!</p>
+        </div>
+
+        <div class="demo-section">
+            <div class="controls">
+                <div class="control-panel">
+                    <h3>📺 Select Device</h3>
+                    <button class="device-btn active" onclick="selectDevice('tv')">📺 Television</button>
+                    <button class="device-btn" onclick="selectDevice('radio')">📻 Radio</button>
+                    <button class="device-btn" onclick="selectDevice('speaker')">🔊 Smart Speaker</button>
+                </div>
+
+                <div class="control-panel">
+                    <h3>🎮 Remote Control</h3>
+                    <div class="remote-buttons">
+                        <button class="remote-btn" onclick="powerOn()">⚡ Power On</button>
+                        <button class="remote-btn" onclick="powerOff()">🔌 Power Off</button>
+                        <button class="remote-btn" onclick="volumeUp()">🔊 Volume +</button>
+                        <button class="remote-btn" onclick="volumeDown()">🔉 Volume -</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="display" id="display">
+                <h3>Device Output</h3>
+                <div id="output">Select a device and use the remote control...</div>
+            </div>
+        </div>
+    </div>
     <script src="js/bridge.js"></script>
 </body>
 </html>

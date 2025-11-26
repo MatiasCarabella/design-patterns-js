@@ -127,25 +127,49 @@ class CounterStore {
     console.log("Nuevo estado:", state);
   });
   
-  dispatcher.dispatch({ type: ActionTypes.INCREMENT });
-  dispatcher.dispatch({ type: ActionTypes.DECREMENT });
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+      // Action logger
+      const actionLogDiv = document.getElementById("actionLog");
+      let actionCount = 0;
 
-  // Función para actualizar la vista con el estado actual del contador
-  function updateView(state) {
-    document.getElementById("counter").textContent = state.count;
-}
+      function logAction(action, state) {
+        actionCount++;
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.innerHTML = `<span class="log-action">[${actionCount}] Action: ${action.type}</span> → <span class="log-state">State: { count: ${state.count} }</span>`;
+        actionLogDiv.insertBefore(entry, actionLogDiv.firstChild);
+      }
 
-// Agregar la función updateView como escuchadora del almacén del contador
-counterStore.addChangeListener(updateView);
+      // Función para actualizar la vista con el estado actual del contador
+      function updateView(state) {
+        const counterEl = document.getElementById("counter");
+        counterEl.textContent = state.count;
+        
+        // Add animation
+        counterEl.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            counterEl.style.transform = 'scale(1)';
+        }, 200);
+      }
 
-// Manejar el clic en los botones para despachar las acciones
-document.getElementById("incrementBtn").addEventListener("click", function() {
-    dispatcher.dispatch({ type: ActionTypes.INCREMENT });
-});
+      // Agregar la función updateView como escuchadora del almacén del contador
+      counterStore.addChangeListener(updateView);
 
-document.getElementById("decrementBtn").addEventListener("click", function() {
-    dispatcher.dispatch({ type: ActionTypes.DECREMENT });
-});
+      // Manejar el clic en los botones para despachar las acciones
+      document.getElementById("incrementBtn").addEventListener("click", function() {
+          const action = { type: ActionTypes.INCREMENT };
+          dispatcher.dispatch(action);
+          logAction(action, counterStore.getState());
+      });
 
-// Inicializar la vista
-updateView(counterStore.getState());
+      document.getElementById("decrementBtn").addEventListener("click", function() {
+          const action = { type: ActionTypes.DECREMENT };
+          dispatcher.dispatch(action);
+          logAction(action, counterStore.getState());
+      });
+
+      // Inicializar la vista
+      updateView(counterStore.getState());
+      logAction({ type: 'INIT' }, counterStore.getState());
+  });
