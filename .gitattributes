@@ -1,2 +1,5 @@
 # Mark HTML files as documentation so they don't count toward language stats
 *.html linguist-documentation
+
+# Ensure JavaScript is detected as the primary language
+*.js linguist-detectable=true
