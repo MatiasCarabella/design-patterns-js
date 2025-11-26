@@ -1,12 +1,17 @@
 {
   "name": "design-patterns-js",
   "version": "1.0.0",
-  "description": "A comprehensive collection of JavaScript design patterns with examples and explanations",
-  "main": "index.js",
+  "description": "A comprehensive collection of JavaScript design patterns with interactive examples and explanations",
+  "main": "index.html",
   "scripts": {
     "start": "npx http-server -p 3000 -o",
     "dev": "npx http-server -p 3000 -o -c-1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/design-patterns-js.git"
+  },
+  "homepage": "https://yourusername.github.io/design-patterns-js",
   "keywords": [
     "design-patterns",
     "javascript",
@@ -14,10 +19,16 @@
     "creational",
     "structural",
     "behavioral",
-    "architectural"
+    "architectural",
+    "interactive",
+    "examples",
+    "tutorial"
   ],
   "author": "Matías Carabella & Daiana Arena",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/design-patterns-js/issues"
+  },
   "devDependencies": {
     "http-server": "^14.1.1"
   }

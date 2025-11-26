@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/yourusername/design-patterns-js?style=flat-square" alt="License">
-  <img src="https://img.shields.io/github/stars/yourusername/design-patterns-js?style=flat-square" alt="Stars">
-  <img src="https://img.shields.io/github/forks/yourusername/design-patterns-js?style=flat-square" alt="Forks">
+  <img src="https://img.shields.io/github/license/matiascarabella/design-patterns-js?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/stars/matiascarabella/design-patterns-js?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/forks/matiascarabella/design-patterns-js?style=flat-square" alt="Forks">
 </p>
 
 A comprehensive collection of design patterns implemented in JavaScript and TypeScript, with clear examples and explanations to help you write better, more maintainable code.
@@ -53,7 +53,7 @@ Provide guidance on organizing application structure for scalability and maintai
 
 ## 🌐 Live Demo
 
-Visit the live site: **[https://yourusername.github.io/design-patterns-js](https://yourusername.github.io/design-patterns-js)**
+Visit the live site: **[https://matiascarabella.github.io/design-patterns-js](https://matiascarabella.github.io/design-patterns-js)**
 
 ## Getting Started
 
@@ -70,7 +70,7 @@ Simply visit the GitHub Pages link above to explore all patterns interactively!
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/design-patterns-js
+git clone https://github.com/matiascarabella/design-patterns-js
 cd design-patterns-js
 ```
 
@@ -94,25 +94,55 @@ This project is ready for GitHub Pages deployment:
 2. Go to your repository Settings → Pages
 3. Under "Source", select the `main` branch
 4. Click Save
-5. Your site will be live at `https://yourusername.github.io/repository-name`
+5. Your site will be live at `https://matiascarabella.github.io/repository-name`
 
 No build step required - it's all static HTML/CSS/JS!
+
+## 📚 Available Patterns
+
+### 01 - JavaScript Intro
+- JavaScript fundamentals and ES6+ features
+
+### 02 - Creational Patterns
+- **Singleton** - Ensure a class has only one instance
+- **Builder** - Construct complex objects step by step
+
+### 03 - Behavioral Patterns
+- **Observer** - Define one-to-many dependencies between objects
+- **Strategy** - Define a family of algorithms and make them interchangeable
+- **State** - Allow an object to alter its behavior when its state changes
+
+### 04 - Structural Patterns
+- **Bridge** - Decouple abstraction from implementation
+- **Decorator** - Add responsibilities to objects dynamically
+
+### 05 - Architectural Patterns
+- **Flux** - Unidirectional data flow architecture
 
 ## Repository Structure
 
 ```
+design-patterns-js/
+├── index.html              # Main landing page
 ├── 01 - JS Intro/          # JavaScript fundamentals
-├── 02 - Creational/        # Singleton, Builder, etc.
-├── 03 - Behavioral/        # Observer, Strategy, State, etc.
-├── 04 - Structural/        # Bridge, Decorator, etc.
-└── 05 - Architectural/     # Flux, MVC, etc.
+│   ├── index.html
+│   └── js/intro.js
+├── 02 - Creational/
+│   ├── singleton/          # Singleton pattern
+│   └── decorator/          # Builder pattern
+├── 03 - Behavioral/
+│   ├── observer/           # Observer pattern
+│   ├── strategy/           # Strategy pattern
+│   └── state/              # State pattern
+├── 04 - Structural/
+│   ├── bridge/             # Bridge pattern
+│   └── decorator/          # Decorator pattern
+├── 05 - Architectural/
+│   └── flux/               # Flux pattern
+├── package.json
+├── README.md
+└── DEPLOYMENT.md           # GitHub Pages deployment guide
 ```
-
-Each pattern directory contains:
-- `index.html` - Interactive demo
-- `js/` - JavaScript implementation
-- `ts/` - TypeScript implementation (where applicable)
-- `README.md` - Pattern documentation
 
 ## Learn More
 
