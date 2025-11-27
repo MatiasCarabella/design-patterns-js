@@ -19,8 +19,8 @@ A comprehensive collection of design patterns implemented in JavaScript and Type
 ## About Us
 
 Created with ♥ by:
-- [Matías Carabella](https://www.linkedin.com/in/matiascarabella/)
 - [Daiana Arena](https://www.linkedin.com/in/arenadaiana/)
+- [Matías Carabella](https://www.linkedin.com/in/matiascarabella/)
 
 ## What Are Design Patterns?
 
@@ -153,7 +153,7 @@ Feel free to explore, experiment, and adapt the code to your projects. Contribut
 
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
 
 
 
